@@ -13,7 +13,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.min.css') }}">
     <!-- Icon Font Css -->
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 </head>
 <body>
     @include('layouts.header')
@@ -49,5 +50,6 @@
     <script src="{{ asset('plugins/google-map/map.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/contact.js') }}"></script>
+    <script src="{{ asset('js/animations.js') }}"></script>
 </body>
 </html>

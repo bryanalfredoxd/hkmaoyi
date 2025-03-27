@@ -22,341 +22,174 @@ if(isset($_GET['error'])){
 	}
 </style>
 
-<style>
-    /* Sobrescribir el estilo que aplica la línea roja */
-    .nav.nav-line .nav-link.active {
-        border-bottom: none !important;
-    }
-
-    /* Animación de entrada para las pestañas */
-    .tab-pane.fade.show {
-        animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Estilo para el enlace activo */
-    .nav-link.active {
-        position: relative;
-        color: #223a66 !important;
-        font-weight: bold;
-    }
-
-    .nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background-color: #ce180a;
-        animation: underline 0.3s ease-in-out;
-    }
-
-    @keyframes underline {
-        from {
-            transform: scaleX(0);
-        }
-        to {
-            transform: scaleX(1);
-        }
-    }
-
-    /* Efecto hover para los enlaces */
-    .nav-link {
-        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-        color: #333;
-    }
-
-    .nav-link:hover {
-        color: #ce180a !important;
-        transform: translateY(-3px);
-    }
-</style>
-
-<style>
-    /* Estilos para la sección de clientes */
-    .clients-section {
-        background: linear-gradient(rgba(0, 81, 81, 0.97), rgba(0, 81, 81, 0.97));
-        padding: 60px 0;
-        position: relative;
-    }
-
-    .clients-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("{{ asset('images/pattern.png') }}") repeat;
-        opacity: 0.1;
-    }
-
-    .section-header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .section-header h2 {
-        font-size: 2.5rem;
-        color: #fff;
-        margin-bottom: 15px;
-        font-weight: 700;
-    }
-
-    .section-header .line-through {
-        position: relative;
-        display: inline-block;
-        color: #e0e0e0;
-        font-size: 1.1rem;
-        padding: 0 70px;
-    }
-
-    .section-header .line-through::before,
-    .section-header .line-through::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        width: 50px;
-        height: 1px;
-        background: rgba(255,255,255,0.3);
-    }
-
-    .section-header .line-through::before {
-        left: 0;
-    }
-
-    .section-header .line-through::after {
-        right: 0;
-    }
-
-    .client-item {
-        background: rgba(255,255,255,0.1);
-        border-radius: 8px;
-        padding: 20px;
-        margin: 10px;
-        transition: all 0.3s ease;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .client-item:hover {
-        transform: translateY(-5px);
-        background: rgba(255,255,255,0.15);
-    }
-
-    .client-item img {
-        max-height: 80px;
-        filter: brightness(0) invert(1);
-        opacity: 0.7;
-        transition: all 0.3s ease;
-    }
-
-    .client-item:hover img {
-        opacity: 1;
-    }
-
-    .carousel-footer {
-        text-align: center;
-        margin-top: 40px;
-        color: #fff;
-    }
-
-    .carousel-footer p {
-        color: #e0e0e0;
-        margin-bottom: 20px;
-    }
-
-    .btn-explore {
-        background: transparent;
-        color: #fff;
-        border: 2px solid rgba(255,255,255,0.3);
-        padding: 10px 25px;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    .btn-explore:hover {
-        background: #fff;
-        color: #005151;
-        border-color: #fff;
-        text-decoration: none;
-    }
-
-    /* Controles del carrusel */
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 40px;
-        height: 40px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 50%;
-        opacity: 1;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .carousel-control-prev:hover,
-    .carousel-control-next:hover {
-        background: rgba(255,255,255,0.2);
-    }
-
-    .carousel-control-prev {
-        left: -50px;
-    }
-
-    .carousel-control-next {
-        right: -50px;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        width: 20px;
-        height: 20px;
-    }
-</style>
-
 <div id="top">
 
-	<section class="banner" style="height:400px;">
-		<div class="overlay3"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="block">
+	{{-- Nuestra Pincipal Ventaja --}}
+	<section class="banner position-relative overflow-hidden" style="height:400px;">
+		<div class="overlay3 position-absolute w-100 h-100"></div>
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-lg-6 order-lg-1 order-2 animate__animated animate__fadeInLeft animate__delay-1s">
+					<div class="block py-4">
 						<div class="divider mb-3"></div>
-						<span class="text-uppercase text-sm letter-spacing text-white">Nuestra principal ventaja es</span>
-						<h1 class="text-uppercase mb-3 mt-3" class="texto">Contamos con personal de habla hispana en nuestras oficinas en China.</h1>
-
-						<p class="mb-4 pr-5 text-white"></p>
-						<div class="btn-container ">
-							<a href="{{ route('conocenos') }}" class="btn btn-main-3 btn-icon btn-round-full">Mas informacion sobre nosotros<i class="bi bi-chevron-right"></i></a>
+						<span class="text-uppercase text-sm letter-spacing text-white d-inline-block animate__animated animate__fadeInUp">Nuestra principal ventaja es</span>
+						<h1 class="text-uppercase mb-3 mt-3 texto animate__animated animate__fadeInUp animate__fast">Contamos con personal de habla hispana en nuestras oficinas en China.</h1>
+						
+						<p class="mb-4 pr-lg-5 text-white animate__animated animate__fadeInUp animate__fast"></p>
+						<div class="btn-container animate__animated animate__fadeInUp animate__delay-1s">
+							<a href="{{ route('conocenos') }}" class="btn btn-main-3 btn-icon btn-round-full hover-effect">
+								Más información sobre nosotros <i class="bi bi-chevron-right ml-2"></i>
+							</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="">
-						<img src="{{ asset('images/fond2.png') }}" alt="" class="img-fluid">
+				<div class="col-lg-6 order-lg-2 order-1 animate__animated animate__fadeInRight animate__delay-1s">
+					<div class="img-container position-relative h-100">
+						<img src="{{ asset('images/fond2.png') }}" alt="Oficinas en China" class="img-fluid rounded-lg shadow-sm floating-animation" style="max-height: 350px;">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="text-white">
-		<div id="hpLogoCarouselContainer">
+	{{-- Nuestros Clientes --}}
+	<section class="text-white" id="clientes-section">
+		<div class="position-absolute w-100 h-100 bg-pattern-overlay"></div>
+		<div id="hpLogoCarouselContainer" class="position-relative">
 			<div class="wrapper">
-				<div id="swiper_hpLogoCarousel" class="genericCarousel" data-module="genericCarousel" data-settings='{&quot;slidesPerView&quot;:6,&quot;spaceBetween&quot;:50,&quot;breakpointsInverse&quot;:true,&quot;breakpoints&quot;:{&quot;599&quot;:{&quot;slidesPerView&quot;:2,&quot;spaceBetween&quot;:20},&quot;799&quot;:{&quot;slidesPerView&quot;:3,&quot;spaceBetween&quot;:30},&quot;999&quot;:{&quot;slidesPerView&quot;:4,&quot;spaceBetween&quot;:40},&quot;1199&quot;:{&quot;slidesPerView&quot;:5}},&quot;effect&quot;:&quot;slide&quot;,&quot;grabCursor&quot;:true,&quot;loop&quot;:false,&quot;lift&quot;:{&quot;enabled&quot;:false,&quot;slotName&quot;:&quot;Homepage Logo Carousel&quot;,&quot;lastCheck&quot;:2000,&quot;transition&quot;:{&quot;name&quot;:&quot;LeftToRightReveal&quot;,&quot;offset&quot;:200,&quot;duration&quot;:700}},&quot;navigation&quot;:{&quot;nextEl&quot;:&quot;#swiper_hpLogoCarousel .swiper-button-next&quot;,&quot;prevEl&quot;:&quot;#swiper_hpLogoCarousel .swiper-button-prev&quot;}}'>
-					<div class="carousel_header">
-						<h2 class="text-white" style="font-size:30px"><strong>Nuestros Clientes</strong></h2>
-						<div class="line-through"><span class="ml-1"> Grandes negocios se hacen contando con buenos aliados. </span></div>
+				<div id="swiper_hpLogoCarousel" class="genericCarousel" data-module="genericCarousel" data-settings='{"slidesPerView":6,"spaceBetween":50,"breakpointsInverse":true,"breakpoints":{"599":{"slidesPerView":2,"spaceBetween":20},"799":{"slidesPerView":3,"spaceBetween":30},"999":{"slidesPerView":4,"spaceBetween":40},"1199":{"slidesPerView":5}},"effect":"slide","grabCursor":true,"loop":false,"lift":{"enabled":false,"slotName":"Homepage Logo Carousel","lastCheck":2000,"transition":{"name":"LeftToRightReveal","offset":200,"duration":700}},"navigation":{"nextEl":"#swiper_hpLogoCarousel .swiper-button-next","prevEl":"#swiper_hpLogoCarousel .swiper-button-prev"}}'>
+					
+					<!-- Encabezado del Carrusel -->
+					<div class="carousel_header text-center mb-5 scroll-animate" data-animation="animate__fadeInDown">
+						<h2 class="text-white display-5 font-weight-bold mb-3">Nuestros Clientes</h2>
+						<div class="line-through mx-auto">
+							<span class="text-muted font-italic">Grandes negocios se hacen contando con buenos aliados.</span>
+						</div>
 					</div>
+	
+					<!-- Contenido del Carrusel -->
 					<div class="swiper-container lefttorightreveal">
-						<div class="container">
-							<div class="row clients-logo">
-								<div class="col-lg-2">
-									<div class="client-thumb">
-									  <img src="{{ asset('images/about/2.png') }}" alt="" class="img-fluid" style="height:90px;filter: opacity(50.4%) invert(0.4%)">
-						            </div>
-						         </div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/4.png') }}" alt="" class="img-fluid" style="height:90px;filter: opacity(50.4%) invert(0.4%)">
+						<div class="container px-0">
+							<div class="row clients-logo swiper-wrapper">
+								<!-- Logos de clientes con animaciones individuales -->
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="100">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/2.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/6.png') }}" alt="" class="img-fluid" style="height:70px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="200">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/4.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/10.png') }}" alt="" class="img-fluid" style="height:90px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="300">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/6.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/12.png') }}" alt="" class="img-fluid" style="height:90px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="400">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/10.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/8.png') }}" alt="" class="img-fluid" style="height:70px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="500">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/12.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/9.png') }}" alt="" class="img-fluid" style="height:90px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="600">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/8.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/13.png') }}" alt="" class="img-fluid" style="height:70px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="700">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/9.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/3.png') }}" alt="" class="img-fluid" style="height:70px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="800">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/13.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/7.png') }}" alt="" class="img-fluid" style="height:50px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="900">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/3.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2">
-									<div class="client-thumb">
-										<img src="{{ asset('images/about/11.png') }}" alt="" class="img-fluid" style="height:70px;filter: opacity(50.4%) invert(0.4%)">
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="1000">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/7.png') }}" alt="Logo cliente" class="img-fluid client-logo">
+									</div>
+								</div>
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="1100">
+									<div class="client-thumb hover-transform">
+										<img src="{{ asset('images/about/11.png') }}" alt="Logo cliente" class="img-fluid client-logo">
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="carousel_footer">
-						<div class="line-through">-</div>
-						<p>Nuestras soluciones están diseñadas específicamente para su empresa y todos sus empleados.
-							<a class="btn btn-main-4 btn-round-full" href="{{ route('proveedores') }}">Explorar proveedores <i class="bi-chevron-right ml-2"></i></a>
-						</p>
+	
+					<!-- Pie del Carrusel -->
+					<div class="carousel_footer text-center mt-5 scroll-animate" data-animation="animate__fadeInUp">
+						<div class="line-through mx-auto mb-4">-</div>
+						<p class="lead mb-4">Nuestras soluciones están diseñadas específicamente para su empresa y todos sus empleados.</p>
+						<a class="btn btn-main-4 btn-round-full btn-lg hover-effect" href="{{ route('proveedores') }}">
+							Explorar proveedores <i class="bi bi-chevron-right ml-2"></i>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section about">
+	{{-- Visitas en Vivo --}}
+	<section class="section about py-5 position-relative overflow-hidden" id="visitas-section">
 		<div class="container">
 			<div class="row align-items-center">
+				<!-- Columna de imágenes izquierda -->
 				<div class="col-lg-3 col-sm-6">
 					<div class="about-img">
-						<img src="{{ asset('images/about/img-1.png') }}" alt="" class="img-fluid">
-						<img src="{{ asset('images/about/img-2.jpg') }}" alt="" class="img-fluid mt-4">
+						<img src="{{ asset('images/about/img-1.png') }}" alt="Visita en vivo a proveedor" 
+							 class="img-fluid rounded shadow scroll-animate" 
+							 data-animation="animate__fadeInLeft" data-delay="100">
+						<img src="{{ asset('images/about/img-2.jpg') }}" alt="Reunión con proveedor" 
+							 class="img-fluid rounded shadow mt-4 scroll-animate" 
+							 data-animation="animate__fadeInLeft" data-delay="300">
 					</div>
 				</div>
+				
+				<!-- Columna de imagen central -->
 				<div class="col-lg-3 col-sm-6">
 					<div class="about-img mt-4 mt-lg-0">
-						<img src="{{ asset('images/about/bg1.jpg') }}" alt="" class="img-fluid">
+						<img src="{{ asset('images/about/bg1.jpg') }}" alt="Fábrica china" 
+							 class="img-fluid rounded-lg shadow-lg scroll-animate" 
+							 data-animation="animate__fadeInUp" data-delay="200">
 					</div>
 				</div>
+				
+				<!-- Columna de contenido -->
 				<div class="col-lg-6">
-					<div class="about-content pl-4 mt-4 mt-lg-0">
-						<h2 class="title-color" style="font-size:30px">Visitas en vivo</h2>
-						<p class="mt-4 mb-5">En estas visitas se establece un contacto directo con el proveedor y sus productos, para conocer de inmediato los precios y detalles del mismo, así como negociar su precio porque haremos una traducción simultánea al idioma español o inglés.</p>
-
-						<a href="{{ route('envivo') }}" class="btn btn-main-2 btn-round-full btn-icon">Conozca mas detalles del servicio<i class="bi-chevron-right ml-3"></i></a>
+					<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+						<h2 class="title-color display-5 font-weight-bold scroll-animate" 
+							data-animation="animate__fadeInRight" data-delay="100">
+							Visitas en vivo
+						</h2>
+						
+						<p class="mt-4 mb-5 lead scroll-animate" 
+						   data-animation="animate__fadeInRight" data-delay="200">
+							En estas visitas se establece un contacto directo con el proveedor y sus productos, 
+							para conocer de inmediato los precios y detalles del mismo, así como negociar su precio 
+							porque haremos una traducción simultánea al idioma español o inglés.
+						</p>
+	
+						<div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="300">
+							<a href="{{ route('envivo') }}" 
+							   class="btn btn-main-2 btn-round-full btn-icon hover-effect">
+								Conozca más detalles del servicio <i class="bi bi-chevron-right ml-3"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -364,242 +197,343 @@ if(isset($_GET['error'])){
 	</section>
 
 	<!--Servicios-->
-	<section class="section doctors" style="padding: 50px 0; background: #f4f9fc;">
+	<section class="section doctors py-5 position-relative overflow-hidden" id="servicios-section" style="background: #f4f9fc;">
 		<div class="container">
-			<div class="row justify-content-center">
+			<!-- Encabezado -->
+			<div class="row justify-content-center scroll-animate" data-animation="animate__fadeInDown">
 				<div class="col-lg-7 text-center">
 					<div class="section-title">
-						<h2 style="font-size:30px">Servicios</h2>
-						<div class="divider mx-auto my-4"></div>
+						<h2 class="display-5 font-weight-bold">Servicios</h2>
+						<div class="divider mx-auto my-4 bg-primary"></div>
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-center">
+	
+			<!-- Pestañas de navegación -->
+			<div class="row justify-content-center scroll-animate" data-animation="animate__fadeIn">
 				<div class="col-12">
 					<div class="d-flex align-items-left flex-column">
 						<div class="nav-scroller d-flex">
-							<div class="nav nav-line d-flex align-items-center justify-contents-center">
-								<a class="nav-link active" data-toggle="pill" href="#proveedores" role="tab" aria-controls="proveedores" aria-selected="true" style="padding: 0px 0px 20px 0 !important;">Auditoría a proveedores</a>
-								<a class="nav-link" data-toggle="pill" href="#compras" role="tab" aria-controls="compras" aria-selected="false" style="padding: 0px 0px 20px 0 !important;">Consolidación de compras</a>
-								<a class="nav-link" data-toggle="pill" href="#despachos" role="tab" aria-controls="despachos" aria-selected="false" style="padding: 0px 0px 20px 0 !important;">Logística de despachos</a>
-								<a class="nav-link" data-toggle="pill" href="#ferias" role="tab" aria-controls="ferias" aria-selected="false" style="padding: 0px 0px 20px 0 !important;">Ferias y visitas a centros</a>
+							<div class="nav nav-line d-flex align-items-center justify-content-center flex-wrap">
+								<a class="nav-link active hover-effect" data-toggle="pill" href="#proveedores" role="tab" aria-controls="proveedores" aria-selected="true">
+									Auditoría a proveedores
+								</a>
+								<a class="nav-link hover-effect" data-toggle="pill" href="#compras" role="tab" aria-controls="compras" aria-selected="false">
+									Consolidación de compras
+								</a>
+								<a class="nav-link hover-effect" data-toggle="pill" href="#despachos" role="tab" aria-controls="despachos" aria-selected="false">
+									Logística de despachos
+								</a>
+								<a class="nav-link hover-effect" data-toggle="pill" href="#ferias" role="tab" aria-controls="ferias" aria-selected="false">
+									Ferias y visitas a centros
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+	
+			<!-- Contenido de las pestañas -->
+			<div class="row justify-content-center">
 				<div class="col-12">
 					<div class="tab-content mt-4">
+						<!-- Pestaña 1: Auditoría a proveedores -->
 						<div class="tab-pane fade show active" id="proveedores">
-								<div class="row">
-									<div class="col-md-8">
-									<div class="about-content pl-4 mt-4 mt-lg-0">
-										<h4 class="title-color">Siempre es bueno conocer antes de comprar</h4>
-										<p class="mt-4 mb-5" style="text-align:justify;">Tenemos la ventaja al estar en China de poder insvestigar a los proveedores tanto documentalmente o en persona haciendoles una visita, previo a que usted haga los primeros pagos.</p>
-
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Solicite este servicio<i class="bi-chevron-right ml-3"></i></a>
-									</div>
-									<div class="row mt-4">
-										<div class="col-3 col-md-2">
-											<div class="about-img mt-4 mt-lg-0">
-												<img src="{{ asset('images/proveedor.webp') }}" alt="" class="img-fluid">
-											</div>
-										</div>
-										<div class="col-9 col-md-9">
-											<div class="about-content pl-4 mt-4 mt-lg-0">
-												<h4 class="title-color">Disponible en toda China</h4>
-												<p class="mt-4 mb-5" style="text-align:justify;">Un servicio indespensable para comenzar de forma segura una relacion comercial basada en la confianza y si es necesario podemos hacer contratos de fiel cumplimiento.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="about-img mt-4 mt-lg-0">
-										<img src="{{ asset('images/auditoria.jpg') }}" alt="" class="img-fluid">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="compras">
-							<div class="row">
+							<div class="row align-items-center scroll-animate" data-animation="animate__fadeInLeft">
 								<div class="col-md-8">
-									<div class="about-content pl-4 mt-4 mt-lg-0">
-										<h4 class="title-color">Mas proveedores en un solo despacho</h4>
-										<p class="mt-4 mb-5" style="text-align:justify;">Compre con sus proveedores regulares o experimente con los nuevos y nosostros le ayudamos a recibir y enviar en un solo contenedor o por pocos metros cubicos tambien esta disponible, consolidar es una de las mejores alternativa para aumentar la variedad y reducir el impacto de los fletes altos.</p>
-
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon" data-toggle="modal" data-target="#tarifas">tarifas y mas informacion<i class="bi-chevron-right ml-3"></i></a>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="img">
-										<img src="{{ asset('images/container-loading.png') }}" alt="" class="img-fluid">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="despachos">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="about-content pl-4 mt-4 mt-lg-0">
-										<h4 class="title-color">Solo necesita transporte desde China?</h4>
-										<p class="mt-4 mb-5" style="text-align:justify;">Nuestros servicio de logistica le puede ofrecer las mejores tarifas de contenedores para latinoamerica saliendo de cualquier puerto de China, contenedores para mercancia convencional, transporte de materiales peligrosos, autos, camiones, maquinaria, contenedores destapados, entre otros.</p>
-
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon" data-toggle="modal" data-target="#transporte">Mas informacion y precios<i class="bi-chevron-right ml-3"></i></a>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="img">
-										<img src="{{ asset('images/envio-de-carga-aerea-maritima.png') }}" alt="" class="img-fluid">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ferias">
-							<div class="row">
-								<div class="col-md-8">
-									<div class="about-content pl-4 mt-4 mt-lg-0">
-										<h4 class="title-color">La mejores ferias y mercados mayoristas</h4>
-										<p class="mt-4 mb-5" style="text-align:justify;">En Abril y octubre son las ferias mas completas de China pero durante todos los meses del año hay ferias especializadas por sector en muchas provincias donde le podemos asistir para que sea gratis su hospedajes, traslados y hacer entrevistas muy puntuales con los fabricantes.</p>
-
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon" data-toggle="modal" data-target="#visitas">Solicite este servicio<i class="bi-chevron-right ml-3"></i></a>
-									</div>
-									<div class="row mt-4">
-										<div class="col-3 col-md-2">
-											<div class="about-img mt-4 mt-lg-0">
-												<img src="{{ asset('images/yiwu3.webp') }}" alt="" class="img-fluid">
-											</div>
-										</div>
-										<div class="col-9 col-md-9">
-											<div class="about-content pl-4 mt-4 mt-lg-0">
-												<a href="{{ route('ferias') }}">
-													<h4 class="title-color">Disponible en toda China todo el año<i class="bi-chevron-right ml-3"></i></h4>
-												</a>
-												<p class="mt-4 mb-5" style="text-align:justify;">Los mercados mayoristas son un buen lugar para visitar de marzo a noviembre por su variedad, buenos precios y por la facilidad de comparar productos y alternativas de proveedores que estan en un mismo lugar con stock.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="about-img mt-4 mt-lg-0">
-										<img src="{{ asset('images/ferias.jpg') }}" alt="" class="img-fluid">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+										<h4 class="title-color font-weight-bold">Siempre es bueno conocer antes de comprar</h4>
+										<p class="mt-4 mb-5 text-justify">
+											Tenemos la ventaja al estar en China de poder investigar a los proveedores tanto documentalmente o en persona haciéndoles una visita, previo a que usted haga los primeros pagos.
+										</p>
 	
-	<section class="section cta-page">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="cta-content">
-						<div class="divider mb-4"></div>
-						<span class="text-uppercase text-sm letter-spacing text-white">Donde comprar pocas cantidades a precios al mayor?</span>
-						<h2 class="mb-5 text-lg text-white" style="font-size:30px">Conoce unos de los mercados mayoristas mas grandes de toda China <span style="color:#E44539;">FUTIAN</span></h2>
-						<a href="{{ route('mercado_futian') }}" class="btn btn-main-3 btn-round-full">Mas informacion<i class="bi-chevron-right  ml-2"></i></a>
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">
+											Solicite este servicio <i class="bi bi-chevron-right ml-3"></i>
+										</a>
+									</div>
+									<div class="row mt-4 align-items-center">
+										<div class="col-3 col-md-2">
+											<div class="about-img mt-4 mt-lg-0">
+												<img src="{{ asset('images/proveedor.webp') }}" alt="Proveedor en China" class="img-fluid rounded shadow">
+											</div>
+										</div>
+										<div class="col-9 col-md-9">
+											<div class="about-content pl-4 mt-4 mt-lg-0">
+												<h4 class="title-color font-weight-bold">Disponible en toda China</h4>
+												<p class="mt-4 mb-5 text-justify">
+													Un servicio indispensable para comenzar de forma segura una relación comercial basada en la confianza y si es necesario podemos hacer contratos de fiel cumplimiento.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 scroll-animate" data-animation="animate__fadeInRight" data-delay="200">
+									<div class="about-img mt-4 mt-lg-0">
+										<img src="{{ asset('images/auditoria.jpg') }}" alt="Auditoría a proveedores" class="img-fluid rounded-lg shadow-lg">
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!-- Pestaña 2: Consolidación de compras -->
+						<div class="tab-pane fade" id="compras">
+							<div class="row align-items-center">
+								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+										<h4 class="title-color font-weight-bold">Más proveedores en un solo despacho</h4>
+										<p class="mt-4 mb-5 text-justify">
+											Compre con sus proveedores regulares o experimente con los nuevos y nosotros le ayudamos a recibir y enviar en un solo contenedor o por pocos metros cúbicos también está disponible, consolidar es una de las mejores alternativas para aumentar la variedad y reducir el impacto de los fletes altos.
+										</p>
+	
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#tarifas">
+											Tarifas y más información <i class="bi bi-chevron-right ml-3"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-4 scroll-animate" data-animation="animate__fadeInRight" data-delay="200">
+									<div class="img">
+										<img src="{{ asset('images/container-loading.png') }}" alt="Consolidación de compras" class="img-fluid rounded-lg shadow-lg">
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!-- Pestaña 3: Logística de despachos -->
+						<div class="tab-pane fade" id="despachos">
+							<div class="row align-items-center">
+								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+										<h4 class="title-color font-weight-bold">¿Solo necesita transporte desde China?</h4>
+										<p class="mt-4 mb-5 text-justify">
+											Nuestro servicio de logística le puede ofrecer las mejores tarifas de contenedores para Latinoamérica saliendo de cualquier puerto de China, contenedores para mercancía convencional, transporte de materiales peligrosos, autos, camiones, maquinaria, contenedores destapados, entre otros.
+										</p>
+	
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#transporte">
+											Más información y precios <i class="bi bi-chevron-right ml-3"></i>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-4 scroll-animate" data-animation="animate__fadeInRight" data-delay="200">
+									<div class="img">
+										<img src="{{ asset('images/envio-de-carga-aerea-maritima.png') }}" alt="Logística de despachos" class="img-fluid rounded-lg shadow-lg">
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<!-- Pestaña 4: Ferias y visitas -->
+						<div class="tab-pane fade" id="ferias">
+							<div class="row align-items-center">
+								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+										<h4 class="title-color font-weight-bold">Las mejores ferias y mercados mayoristas</h4>
+										<p class="mt-4 mb-5 text-justify">
+											En abril y octubre son las ferias más completas de China pero durante todos los meses del año hay ferias especializadas por sector en muchas provincias donde le podemos asistir para que sea gratis su hospedaje, traslados y hacer entrevistas muy puntuales con los fabricantes.
+										</p>
+	
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#visitas">
+											Solicite este servicio <i class="bi bi-chevron-right ml-3"></i>
+										</a>
+									</div>
+									<div class="row mt-4 align-items-center">
+										<div class="col-3 col-md-2">
+											<div class="about-img mt-4 mt-lg-0">
+												<img src="{{ asset('images/yiwu3.webp') }}" alt="Mercado Yiwu" class="img-fluid rounded shadow">
+											</div>
+										</div>
+										<div class="col-9 col-md-9">
+											<div class="about-content pl-4 mt-4 mt-lg-0">
+												<a href="{{ route('ferias') }}" class="text-decoration-none">
+													<h4 class="title-color font-weight-bold hover-effect">
+														Disponible en toda China todo el año <i class="bi bi-chevron-right ml-3"></i>
+													</h4>
+												</a>
+												<p class="mt-4 mb-5 text-justify">
+													Los mercados mayoristas son un buen lugar para visitar de marzo a noviembre por su variedad, buenos precios y por la facilidad de comparar productos y alternativas de proveedores que están en un mismo lugar con stock.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 scroll-animate" data-animation="animate__fadeInRight" data-delay="200">
+									<div class="about-img mt-4 mt-lg-0">
+										<img src="{{ asset('images/ferias.jpg') }}" alt="Ferias en China" class="img-fluid rounded-lg shadow-lg">
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="page-title" style="padding: 0px 0px 0px 0px;background:#fbb942;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 m-4">
-					<div class="block text-center">
-						<b style="font-size:20px;color: #223a66;">¿ No está seguro donde comprar lo que necesitas ? </b>
-						<a href="{{ route('producto_ideal') }}" class="btn btn-round-full btn-main-2 btn-icon">Encuentra una solución<i class="bi-chevron-right ml-3"></i></a>
+	{{-- Donde comprar --}}
+	<section class="section position-relative overflow-hidden" id="futian-section" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/yiwu.webp') }}') no-repeat center center/cover; min-height: 400px;">
+		<div class="" style="background-color: rgba(0,0,0,0.3);"></div>
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-lg-12 text-center scroll-animate" data-animation="animate__fadeInUp">
+					<div class="cta-content py-5">
+						<div class="divider mb-4 mx-auto bg-white"></div>
+						<span class="text-uppercase text-sm letter-spacing text-white d-block animate__animated animate__fadeIn font-weight-bold">
+							¿Dónde comprar pocas cantidades a precios al mayor?
+						</span>
+						<h2 class="mb-5 text-white display-5 font-weight-bold scroll-animate" data-animation="animate__fadeInUp" data-delay="100">
+							Conoce uno de los mercados mayoristas más grandes de toda China 
+							<span class="text-danger" style="color:#fe3224 !important;">FUTIAN</span>
+						</h2>
+						<div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="200">
+							<a href="{{ route('mercado_futian') }}" class="btn btn-main-3 btn-round-full hover-effect">
+								Más información <i class="bi bi-chevron-right ml-2"></i>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section about">
+	<section class="page-title py-5 position-relative overflow-hidden" style="background:#fbb942;" id="producto-ideal-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-10 col-lg-8 text-center scroll-animate" data-animation="animate__fadeInDown">
+					<div class="block">
+						<h2 class="mb-4 font-weight-bold text-dark" style="font-size: 28px; color: #223a66 !important;">
+							¿No estás seguro dónde comprar lo que necesitas?
+						</h2>
+						<div class="divider mx-auto bg-dark mb-4" style="height: 2px; width: 80px;"></div>
+						<div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="200">
+							<a href="{{ route('producto_ideal') }}" 
+							class="btn btn-round-full btn-main-2 btn-icon hover-effect px-4 py-2">
+								<span class="d-flex align-items-center">
+									Encuentra una solución
+									<i class="bi bi-chevron-right ml-3"></i>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section about py-5 position-relative overflow-hidden bg-light" id="app-section">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<div class="about-content pl-4 mt-4 mt-lg-0">
-						<h2 class="title-color" style="font-size:30px">Supervise sus compras.</h2><br>
-						<h5 style="color:#e96a61;">I-YIWU fue creada para ahorrar tiempo en todos los procesos.</h5>
-						<p class="mt-4 mb-5">Nuestra APP I-YIWU esta disponible para todos que vienen de compras a la ciudad de Yiwu, y requieren de llevar un control completo o para los empresarios que aun sin venir quieren tener las fotos, los precios y detalles de todos sus productos en un solo lugar y decidir la cantidad a comprar y de inmediato obtener todos los calculos listos.</p>
-
-						<a href="{{ route('app_futian') }}" class="btn btn-main-2 btn-round-full btn-icon">Conozca mas sobre esta APP<i class="bi-chevron-right ml-3"></i></a>
+				<!-- Columna de contenido -->
+				<div class="col-lg-6 order-lg-1 order-2">
+					<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+						<h2 class="title-color display-5 font-weight-bold scroll-animate" 
+							data-animation="animate__fadeInLeft" 
+							style="color: #2c3e50 !important;">
+							Supervise sus compras.
+						</h2>
+						
+						<h5 class="mt-3 mb-4 text-danger scroll-animate" 
+							data-animation="animate__fadeInLeft" 
+							data-delay="100"
+							style="color: #e96a61 !important;">
+							I-YIWU fue creada para ahorrar tiempo en todos los procesos.
+						</h5>
+						
+						<p class="mt-4 mb-5 lead scroll-animate" 
+						   data-animation="animate__fadeInLeft" 
+						   data-delay="200">
+							Nuestra APP I-YIWU está disponible para todos que vienen de compras a la ciudad de Yiwu, 
+							y requieren llevar un control completo o para los empresarios que aun sin venir quieren 
+							tener las fotos, los precios y detalles de todos sus productos en un solo lugar y decidir 
+							la cantidad a comprar y de inmediato obtener todos los cálculos listos.
+						</p>
+	
+						<div class="scroll-animate" 
+							 data-animation="animate__fadeInUp" 
+							 data-delay="300">
+							<a href="{{ route('app_futian') }}" 
+							   class="btn btn-main-2 btn-round-full btn-icon hover-effect">
+								<span class="d-flex align-items-center">
+									Conozca más sobre esta APP
+									<i class="bi bi-chevron-right ml-3"></i>
+								</span>
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 col-sm-12">
-					<div class="about-img mt-4 mt-lg-0">
-						<img src="{{ asset('images/futian.jpg') }}" alt="" class="img-fluid">
+				
+				<!-- Columna de imagen -->
+				<div class="col-lg-6 col-sm-12 order-lg-2 order-1">
+					<div class="about-img mt-4 mt-lg-0 scroll-animate" 
+						 data-animation="animate__fadeInRight">
+						<img src="{{ asset('images/futian.jpg') }}" 
+							 alt="APP I-YIWU para gestionar compras en Yiwu" 
+							 class="img-fluid rounded-lg shadow-lg">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	
-	<!--modales -->
-	<div style="margin-top: auto" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+	{{-- MODAL Auditoria a aproveedores --}}
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 900px;">
 			<div class="modal-content" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
 				<!-- Encabezado de la modal -->
-				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.5rem;">Solicitar cotización del servicio de auditoría</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 1rem 2rem;">
+					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.3rem; line-height: 1.4;">
+						Solicitar cotización del servicio de auditoría
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; position: absolute; right: 20px;">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 	
 				<!-- Cuerpo de la modal -->
-				<div class="modal-body">
+				<div class="modal-body" style="padding: 2rem;">
 					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
 						<div class="row">
 							<!-- Columna izquierda -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="recipient-name" class="col-form-label font-weight-bold">
 										<i class="bi bi-person me-2"></i> Nombre del solicitante
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="recipient-name" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="recipient-email" class="col-form-label font-weight-bold">
 										<i class="bi bi-envelope me-2"></i> Email
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="email" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="email" class="form-control form-control-lg" id="recipient-email" name="email" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div style="margin-top: 30px;" class="form-group">
-									<label style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label class="font-weight-bold d-block mb-3">
 										<i class="bi bi-file-earmark-text me-2"></i> Tipo de auditoría
 									</label>
-									<div class="form-check">
-										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Documental">
+									<div class="form-check mb-2">
+										<input class="form-check-input" type="radio" name="tipo_auditoria" id="flexRadioDefault1" value="Documental">
 										<label class="form-check-label" for="flexRadioDefault1">
 											Documental
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Visita a la fabrica" checked>
+										<input class="form-check-input" type="radio" name="tipo_auditoria" id="flexRadioDefault2" value="Visita a la fabrica" checked>
 										<label class="form-check-label" for="flexRadioDefault2">
 											Visita a la fábrica
 										</label>
 									</div>
 								</div>
 							</div>
-
+	
 							<!-- Columna derecha -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="recipient-country" class="col-form-label font-weight-bold">
 										<i class="bi bi-globe me-2"></i> País
 									</label>
-									<select class="form-control" name="pais" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<select class="form-control form-control-lg" id="recipient-country" name="pais" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione su país</option>
 										<option value="Venezuela">Venezuela</option>
-										<option value="Usa">Usa</option>
+										<option value="Usa">Estados Unidos</option>
 										<option value="Ecuador">Ecuador</option>
 										<option value="Colombia">Colombia</option>
 										<option value="Republica dominicana">República Dominicana</option>
@@ -607,24 +541,24 @@ if(isset($_GET['error'])){
 										<option value="otros">Otros</option>
 									</select>
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="recipient-city" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="recipient-city" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="recipient-province" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt-fill me-2"></i> Provincia en China
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="recipient-province" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
 							</div>
 						</div>
-
+	
 						<!-- Pie de la modal -->
-						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none;">
-							<button type="submit" name="auditoria" class="btn btn-round-full btn-primary" style="background-color: #223a66; border: none; padding: 10px 30px; font-size: 1rem; border-radius: 25px;">
+						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none; padding: 1.5rem 0 0 0;">
+							<button type="submit" name="auditoria" class="btn btn-primary btn-lg" style="background-color: #223a66; border: none; padding: 10px 40px; border-radius: 25px; min-width: 200px;">
 								ENVIAR
 							</button>
 						</div>
@@ -634,77 +568,81 @@ if(isset($_GET['error'])){
 		</div>
 	</div>
 
-
-	<div style="margin-top: auto;" class="modal fade" id="visitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+	{{-- MODAL Ferias y visitas a centros --}}
+	<div class="modal fade" id="visitas" tabindex="-1" role="dialog" aria-labelledby="visitasModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 900px;">
 			<div class="modal-content" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
 				<!-- Encabezado de la modal -->
-				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.5rem;">Solicitar el servicio de visita</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 1.2rem 2rem;">
+					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.3rem; line-height: 1.4;">
+						Solicitar el servicio de visita
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; position: absolute; right: 20px;">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-
+	
 				<!-- Cuerpo de la modal -->
-				<div class="modal-body">
+				<div class="modal-body" style="padding: 2rem;">
 					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
 						<div class="row">
 							<!-- Columna izquierda -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="visitas-nombre" class="col-form-label font-weight-bold">
 										<i class="bi bi-person me-2"></i> Nombre del solicitante
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="visitas-nombre" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="visitas-email" class="col-form-label font-weight-bold">
 										<i class="bi bi-envelope me-2"></i> Email
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="email" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="email" class="form-control form-control-lg" id="visitas-email" name="email" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="visitas-pais" class="col-form-label font-weight-bold">
 										<i class="bi bi-globe me-2"></i> País
 									</label>
-									<select class="form-control" name="pais" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<select class="form-control form-control-lg" id="visitas-pais" name="pais" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione su país</option>
 										<option value="Venezuela">Venezuela</option>
-										<option value="Usa">Usa</option>
+										<option value="Usa">Estados Unidos</option>
 										<option value="Ecuador">Ecuador</option>
 										<option value="Colombia">Colombia</option>
 										<option value="Republica dominicana">República Dominicana</option>
 										<option value="Panama">Panamá</option>
+										<option value="otros">Otros</option>
 									</select>
 								</div>
 							</div>
-
+	
 							<!-- Columna derecha -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="visitas-ciudad" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="visitas-ciudad" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="visitas-provincia" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt-fill me-2"></i> Provincia en China
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="visitas-provincia" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="visitas-mensaje" class="col-form-label font-weight-bold">
 										<i class="bi bi-chat-left-text me-2"></i> Mensaje
 									</label>
-									<textarea class="form-control" id="recipient-name" name="mensaje" rows="4" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;"></textarea>
+									<textarea class="form-control form-control-lg" id="visitas-mensaje" name="mensaje" rows="4" required style="border-radius: 5px; border: 1px solid #ddd; min-height: 120px;"></textarea>
 								</div>
 							</div>
 						</div>
-
+	
 						<!-- Pie de la modal -->
-						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none;">
-							<button type="submit" class="btn btn-round-full btn-primary" name="visita" style="background-color: #223a66; border: none; padding: 10px 30px; font-size: 1rem; border-radius: 25px;">
+						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none; padding: 1.5rem 0 0 0;">
+							<button type="submit" class="btn btn-primary btn-lg" name="visita" style="background-color: #223a66; border: none; padding: 10px 40px; border-radius: 25px; min-width: 200px;">
 								ENVIAR
 							</button>
 						</div>
@@ -716,39 +654,62 @@ if(isset($_GET['error'])){
 
 
 	<!--Modal Tarifas-->
-	<div  class="modal fade" id="tarifas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+	<div class="modal fade" id="tarifas" tabindex="-1" role="dialog" aria-labelledby="tarifasModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 900px;">
 			<div class="modal-content" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
 				<!-- Encabezado de la modal -->
-				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.5rem;">Tarifas</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 1.2rem 2rem;">
+					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.3rem; line-height: 1.4;">
+						Tarifas de Consolidación y Transporte
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; position: absolute; right: 20px;">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 
 				<!-- Cuerpo de la modal -->
-				<div class="modal-body">
-					<div class="row">
+				<div class="modal-body" style="padding: 2rem;">
+					<div class="row align-items-center">
 						<!-- Columna izquierda (Texto) -->
 						<div class="col-lg-8">
-							<div class="about-content pl-4 mt-4 mt-lg-0">
-								<h3 class="mt-5 mb-4 title-color" style="color: #005151;">Precios hasta fin de enero 2022</h3>
-								<div class="divider my-4"></div>
+							<div class="about-content pl-lg-4">
+								<h3 class="mb-4 font-weight-bold" style="color: #005151;">
+									Precios vigentes hasta fin de enero 2022
+								</h3>
+								<div class="divider bg-primary mb-4" style="height: 2px; width: 80px;"></div>
 								<ul class="list-unstyled department-service">
-									<li class="mb-3"><i class="bi bi-check-lg me-2" style="color: #005151;"></i>295 USD / metros cúbico hasta Guayaquil.</li>
-									<li class="mb-3"><i class="bi bi-check-lg me-2" style="color: #005151;"></i>310 USD / metro cúbico hasta Caucedo.</li>
-									<li class="mb-3"><i class="bi bi-check-lg me-2" style="color: #005151;"></i>610 USD / metro cúbico puerta a puerta Venezuela.</li>
-									<li class="mb-3"><i class="bi bi-check-lg me-2" style="color: #005151;"></i>1950 USD por el servicio de consolidación por contenedor de 40Q.</li>
-									<li class="mb-3"><i class="bi bi-exclamation-triangle me-2" style="color: #dc3545;"></i><b class="text-danger">* Nota:</b> El precio del flete por contenedor se actualiza cada semana según el puerto final.</li>
+									<li class="mb-3 d-flex align-items-start">
+										<i class="bi bi-check2-square" style="color: #005151; font-size: 1.2rem;"></i>
+										<span> 	295 USD / metros cúbico hasta Guayaquil</span>
+									</li>
+									<li class="mb-3 d-flex align-items-start">
+										<i class="bi bi-check2-square me-2" style="color: #005151; font-size: 1.2rem;"></i>
+										<span> 310 USD / metro cúbico hasta Caucedo</span>
+									</li>
+									<li class="mb-3 d-flex align-items-start">
+										<i class="bi bi-check2-square me-2" style="color: #005151; font-size: 1.2rem;"></i>
+										<span> 610 USD / metro cúbico puerta a puerta Venezuela</span>
+									</li>
+									<li class="mb-3 d-flex align-items-start">
+										<i class="bi bi-check2-square me-2" style="color: #005151; font-size: 1.2rem;"></i>
+										<span> 1950 USD por el servicio de consolidación por contenedor de 40Q</span>
+									</li>
+									<li class="mb-4 d-flex align-items-start">
+										<i class="bi bi-exclamation-triangle mt-1 me-2" style="color: #dc3545; font-size: 1.2rem;"></i>
+										<span><strong class="text-danger">* Nota:</strong> El precio del flete por contenedor se actualiza cada semana según el puerto final.</span>
+									</li>
 								</ul>
+								<div class="alert alert-warning mt-4" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+									<i class="bi bi-info-circle-fill me-2"></i>
+									<strong>Importante:</strong> Estas tarifas están sujetas a cambios según fluctuaciones del mercado.
+								</div>
 							</div>
 						</div>
 
 						<!-- Columna derecha (Imagen) -->
 						<div class="col-lg-4">
-							<div class="about-img mt-4 mt-lg-0">
-								<img src="{{ asset('images/puerto.webp') }}" alt="" class="img-fluid" style="border-radius: 10px;">
+							<div class="about-img mt-4 mt-lg-0 scroll-animate" data-animation="animate__fadeInRight">
+								<img src="{{ asset('images/puerto.webp') }}" alt="Servicios de consolidación y transporte marítimo" class="img-fluid rounded-lg shadow" style="max-height: 400px; object-fit: cover;">
 							</div>
 						</div>
 					</div>
@@ -758,78 +719,88 @@ if(isset($_GET['error'])){
 	</div>
 
 	<!--Solicitar cotización del servicio de transporte-->
-	<div style="margin-top: auto;" class="modal fade" id="transporte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+	<div class="modal fade" id="transporte" tabindex="-1" role="dialog" aria-labelledby="transporteModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="max-width: 900px;">
 			<div class="modal-content" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
 				<!-- Encabezado de la modal -->
-				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.5rem;">Solicitar cotización del servicio de transporte</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+				<div class="modal-header d-flex align-items-center justify-content-between" style="background-color: #223a66; border-top-left-radius: 10px; border-top-right-radius: 10px; padding: 1.2rem 2rem;">
+					<h5 class="modal-title text-center w-100 mb-0" style="color: white; font-size: 1.3rem; line-height: 1.4;">
+						Solicitar cotización del servicio de transporte
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white; position: absolute; right: 20px;">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-
+	
 				<!-- Cuerpo de la modal -->
-				<div class="modal-body">
+				<div class="modal-body" style="padding: 2rem;">
 					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
 						<div class="row">
 							<!-- Columna izquierda -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="transporte-nombre" class="col-form-label font-weight-bold">
 										<i class="bi bi-person me-2"></i> Nombre del solicitante
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="transporte-nombre" name="nombre" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="transporte-email" class="col-form-label font-weight-bold">
 										<i class="bi bi-envelope me-2"></i> Email
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="email" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="email" class="form-control form-control-lg" id="transporte-email" name="email" required style="border-radius: 5px; border: 1px solid #ddd;">
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="transporte-puerto" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt me-2"></i> Puertos de China
 									</label>
-									<select class="form-control" id="puerto" name="puerto" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
-										<option>Puerto de Shanghai</option>
-										<option>Puerto de Shenzhen</option>
-										<option>Puerto de Ningbo-Zhoushan</option>
-										<option>Puerto de Guangzhou</option>
-										<option>Puerto de Hong Kong</option>
-										<option>Puerto de Qingdao</option>
-										<option>Puerto de Dalian</option>
-										<option>Puerto de Tianjin</option>
+									<select class="form-control form-control-lg" id="transporte-puerto" name="puerto" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione un puerto</option>
+										<option value="Shanghai">Puerto de Shanghai</option>
+										<option value="Shenzhen">Puerto de Shenzhen</option>
+										<option value="Ningbo-Zhoushan">Puerto de Ningbo-Zhoushan</option>
+										<option value="Guangzhou">Puerto de Guangzhou</option>
+										<option value="Hong Kong">Puerto de Hong Kong</option>
+										<option value="Qingdao">Puerto de Qingdao</option>
+										<option value="Dalian">Puerto de Dalian</option>
+										<option value="Tianjin">Puerto de Tianjin</option>
 									</select>
 								</div>
 							</div>
-
+	
 							<!-- Columna derecha -->
-							<div class="col-6">
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
-										<i class="bi bi-box me-2"></i> Tipo de contenedores
+							<div class="col-md-6">
+								<div class="form-group mb-4">
+									<label for="transporte-tipo" class="col-form-label font-weight-bold">
+										<i class="bi bi-box me-2"></i> Tipo de contenedor
 									</label>
-									<select class="form-control" name="tipo" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
-										<option>20 GP</option>
-										<option>40 GP</option>
-										<option>40 HQ</option>
-										<option>Otros</option>
+									<select class="form-control form-control-lg" id="transporte-tipo" name="tipo" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione tipo</option>
+										<option value="20 GP">20 GP (Pies estándar)</option>
+										<option value="40 GP">40 GP (Pies estándar)</option>
+										<option value="40 HQ">40 HQ (High Cube)</option>
+										<option value="Otros">Otros (Especificar en mensaje)</option>
 									</select>
 								</div>
-								<div class="form-group">
-									<label for="recipient-name" class="col-form-label" style="font-weight: bold;">
+								<div class="form-group mb-4">
+									<label for="transporte-destino" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt-fill me-2"></i> Puerto destino
 									</label>
-									<input type="text" class="form-control" id="recipient-name" name="destino" required style="border-radius: 5px; border: 1px solid #ddd; padding: 10px;">
+									<input type="text" class="form-control form-control-lg" id="transporte-destino" name="destino" placeholder="Ej: Puerto de Guayaquil" required style="border-radius: 5px; border: 1px solid #ddd;">
+								</div>
+								<div class="form-group mb-4">
+									<label for="transporte-mensaje" class="col-form-label font-weight-bold">
+										<i class="bi bi-chat-left-text me-2"></i> Información adicional
+									</label>
+									<textarea class="form-control form-control-lg" id="transporte-mensaje" name="mensaje" rows="3" style="border-radius: 5px; border: 1px solid #ddd; min-height: 100px;" placeholder="Especifique tipo de mercancía, peso aproximado, etc."></textarea>
 								</div>
 							</div>
 						</div>
-
+	
 						<!-- Pie de la modal -->
-						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none;">
-							<button type="submit" class="btn btn-round-full btn-primary" name="transporte" style="background-color: #223a66; border: none; padding: 10px 30px; font-size: 1rem; border-radius: 25px;">
-								ENVIAR
+						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none; padding: 1.5rem 0 0 0;">
+							<button type="submit" class="btn btn-primary btn-lg" name="transporte" style="background-color: #223a66; border: none; padding: 10px 40px; border-radius: 25px; min-width: 200px;">
+								<i class="bi bi-send-fill me-2"></i> ENVIAR SOLICITUD
 							</button>
 						</div>
 					</form>

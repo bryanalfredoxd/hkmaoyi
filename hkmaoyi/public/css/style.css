@@ -928,12 +928,6 @@ a:focus {
   background-position: center center;
 }
 
-.cta-page {
-  background: url("../images/yiwu.webp") no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
 .testimonial {
   position: relative;
 }
