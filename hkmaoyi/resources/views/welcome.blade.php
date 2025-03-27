@@ -83,6 +83,152 @@ if(isset($_GET['error'])){
     }
 </style>
 
+<style>
+    /* Estilos para la sección de clientes */
+    .clients-section {
+        background: linear-gradient(rgba(0, 81, 81, 0.97), rgba(0, 81, 81, 0.97));
+        padding: 60px 0;
+        position: relative;
+    }
+
+    .clients-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("{{ asset('images/pattern.png') }}") repeat;
+        opacity: 0.1;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .section-header .line-through {
+        position: relative;
+        display: inline-block;
+        color: #e0e0e0;
+        font-size: 1.1rem;
+        padding: 0 70px;
+    }
+
+    .section-header .line-through::before,
+    .section-header .line-through::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        height: 1px;
+        background: rgba(255,255,255,0.3);
+    }
+
+    .section-header .line-through::before {
+        left: 0;
+    }
+
+    .section-header .line-through::after {
+        right: 0;
+    }
+
+    .client-item {
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px;
+        transition: all 0.3s ease;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .client-item:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.15);
+    }
+
+    .client-item img {
+        max-height: 80px;
+        filter: brightness(0) invert(1);
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+
+    .client-item:hover img {
+        opacity: 1;
+    }
+
+    .carousel-footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #fff;
+    }
+
+    .carousel-footer p {
+        color: #e0e0e0;
+        margin-bottom: 20px;
+    }
+
+    .btn-explore {
+        background: transparent;
+        color: #fff;
+        border: 2px solid rgba(255,255,255,0.3);
+        padding: 10px 25px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .btn-explore:hover {
+        background: #fff;
+        color: #005151;
+        border-color: #fff;
+        text-decoration: none;
+    }
+
+    /* Controles del carrusel */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        opacity: 1;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    .carousel-control-prev {
+        left: -50px;
+    }
+
+    .carousel-control-next {
+        right: -50px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
 <div id="top">
 
 	<section class="banner" style="height:400px;">
