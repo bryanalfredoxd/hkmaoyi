@@ -24,8 +24,23 @@ if(isset($_GET['error'])){
 
 <div id="top">
 
+<style>
+	/* Oculta la imagen en dispositivos menores a 992px (lg breakpoint de Bootstrap) */
+@media (max-width: 991.98px) {
+    .banner .img-container {
+        display: none !important;
+    }
+    
+    /* Opcional: Ajusta la altura del banner en móviles */
+    .banner {
+        height: auto !important;
+        padding: 60px 0;
+    }
+}
+</style>
+
 	{{-- Nuestra Pincipal Ventaja --}}
-	<section class="banner position-relative overflow-hidden" style="height:400px;">
+	<section style="margin-top: 165px" class="banner position-relative overflow-hidden" style="height:400px;">
 		<div class="overlay3 position-absolute w-100 h-100"></div>
 		<div class="container h-100">
 			<div class="row align-items-center h-100">
@@ -36,8 +51,8 @@ if(isset($_GET['error'])){
 						<h1 class="text-uppercase mb-3 mt-3 texto animate__animated animate__fadeInUp animate__fast">Contamos con personal de habla hispana en nuestras oficinas en China.</h1>
 						
 						<p class="mb-4 pr-lg-5 text-white animate__animated animate__fadeInUp animate__fast"></p>
-						<div class="btn-container animate__animated animate__fadeInUp animate__delay-1s">
-							<a href="{{ route('conocenos') }}" class="btn btn-main-3 btn-icon btn-round-full hover-effect">
+						<div class="btn-container animate__animated animate__fadeInUp animate__delay-1s text-center text-md-left">
+							<a href="{{ route('conocenos') }}" class="btn btn-main-3 btn-icon btn-round-full hover-effect d-inline-block">
 								Más información sobre nosotros <i class="bi bi-chevron-right ml-2"></i>
 							</a>
 						</div>
@@ -57,82 +72,32 @@ if(isset($_GET['error'])){
 		<div class="position-absolute w-100 h-100 bg-pattern-overlay"></div>
 		<div id="hpLogoCarouselContainer" class="position-relative">
 			<div class="wrapper">
-				<div id="swiper_hpLogoCarousel" class="genericCarousel" data-module="genericCarousel" data-settings='{"slidesPerView":6,"spaceBetween":50,"breakpointsInverse":true,"breakpoints":{"599":{"slidesPerView":2,"spaceBetween":20},"799":{"slidesPerView":3,"spaceBetween":30},"999":{"slidesPerView":4,"spaceBetween":40},"1199":{"slidesPerView":5}},"effect":"slide","grabCursor":true,"loop":false,"lift":{"enabled":false,"slotName":"Homepage Logo Carousel","lastCheck":2000,"transition":{"name":"LeftToRightReveal","offset":200,"duration":700}},"navigation":{"nextEl":"#swiper_hpLogoCarousel .swiper-button-next","prevEl":"#swiper_hpLogoCarousel .swiper-button-prev"}}'>
-					
+				<div id="swiper_hpLogoCarousel" class="genericCarousel">
 					<!-- Encabezado del Carrusel -->
-					<div class="carousel_header text-center mb-5 scroll-animate" data-animation="animate__fadeInDown">
+					<div class="carousel_header text-center mb-2 scroll-animate" data-animation="animate__fadeInDown">
 						<h2 class="text-white display-5 font-weight-bold mb-3">Nuestros Clientes</h2>
-						<div class="line-through mx-auto">
+						<div class="d-none d-md-block line-through mx-auto">
 							<span class="text-muted font-italic">Grandes negocios se hacen contando con buenos aliados.</span>
 						</div>
 					</div>
-	
-					<!-- Contenido del Carrusel -->
-					<div class="swiper-container lefttorightreveal">
+					
+					<!-- Contenido del Carrusel (oculto en móviles) -->
+					<div class="swiper-container lefttorightreveal d-none d-md-block">
 						<div class="container px-0">
 							<div class="row clients-logo swiper-wrapper">
-								<!-- Logos de clientes con animaciones individuales -->
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="100">
+								@foreach(['2', '4', '6', '8', '9', '10', '11', '12', '13', '3', '7'] as $img)
+								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="{{ $loop->index * 100 + 100 }}">
 									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/2.png') }}" alt="Logo cliente" class="img-fluid client-logo">
+										<img src="{{ asset("images/about/$img.png") }}" alt="Logo cliente {{ $img }}" class="img-fluid client-logo">
 									</div>
 								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="200">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/4.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="300">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/6.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="400">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/10.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="500">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/12.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="600">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/8.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="700">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/9.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="800">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/13.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="900">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/3.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="1000">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/7.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
-								<div class="col-lg-2 swiper-slide scroll-animate" data-animation="animate__zoomIn" data-delay="1100">
-									<div class="client-thumb hover-transform">
-										<img src="{{ asset('images/about/11.png') }}" alt="Logo cliente" class="img-fluid client-logo">
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
-	
+					
 					<!-- Pie del Carrusel -->
-					<div class="carousel_footer text-center mt-5 scroll-animate" data-animation="animate__fadeInUp">
+					<div class="carousel_footer text-center mt-3 mt-md-5 scroll-animate" data-animation="animate__fadeInUp">
 						<div class="line-through mx-auto mb-4">-</div>
 						<p class="lead mb-4">Nuestras soluciones están diseñadas específicamente para su empresa y todos sus empleados.</p>
 						<a class="btn btn-main-4 btn-round-full btn-lg hover-effect" href="{{ route('proveedores') }}">
@@ -149,7 +114,7 @@ if(isset($_GET['error'])){
 		<div class="container">
 			<div class="row align-items-center">
 				<!-- Columna de imágenes izquierda -->
-				<div class="col-lg-3 col-sm-6">
+				<div class="col-lg-3 col-sm-6 d-none d-md-block">
 					<div class="about-img">
 						<img src="{{ asset('images/about/img-1.png') }}" alt="Visita en vivo a proveedor" 
 							 class="img-fluid rounded shadow scroll-animate" 
@@ -161,7 +126,7 @@ if(isset($_GET['error'])){
 				</div>
 				
 				<!-- Columna de imagen central -->
-				<div class="col-lg-3 col-sm-6">
+				<div class="col-lg-3 col-sm-6 d-none d-md-block">
 					<div class="about-img mt-4 mt-lg-0">
 						<img src="{{ asset('images/about/bg1.jpg') }}" alt="Fábrica china" 
 							 class="img-fluid rounded-lg shadow-lg scroll-animate" 
@@ -184,9 +149,9 @@ if(isset($_GET['error'])){
 							porque haremos una traducción simultánea al idioma español o inglés.
 						</p>
 	
-						<div class="scroll-animate" data-animation="animate__fadeInUp" data-delay="300">
+						<div class="scroll-animate text-center text-md-left" data-animation="animate__fadeInUp" data-delay="300">
 							<a href="{{ route('envivo') }}" 
-							   class="btn btn-main-2 btn-round-full btn-icon hover-effect">
+							   class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block">
 								Conozca más detalles del servicio <i class="bi bi-chevron-right ml-3"></i>
 							</a>
 						</div>
@@ -214,7 +179,7 @@ if(isset($_GET['error'])){
 				<div class="col-12">
 					<div class="d-flex align-items-left flex-column">
 						<div class="nav-scroller d-flex">
-							<div class="nav nav-line d-flex align-items-center justify-content-center flex-wrap">
+							<div class="nav nav-line d-flex align-items-center justify-content-center flex-wrap text-center text-md-left">
 								<a class="nav-link active hover-effect" data-toggle="pill" href="#proveedores" role="tab" aria-controls="proveedores" aria-selected="true">
 									Auditoría a proveedores
 								</a>
@@ -241,13 +206,13 @@ if(isset($_GET['error'])){
 						<div class="tab-pane fade show active" id="proveedores">
 							<div class="row align-items-center scroll-animate" data-animation="animate__fadeInLeft">
 								<div class="col-md-8">
-									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0 text-center text-md-left">
 										<h4 class="title-color font-weight-bold">Siempre es bueno conocer antes de comprar</h4>
 										<p class="mt-4 mb-5 text-justify">
 											Tenemos la ventaja al estar en China de poder investigar a los proveedores tanto documentalmente o en persona haciéndoles una visita, previo a que usted haga los primeros pagos.
 										</p>
 	
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">
 											Solicite este servicio <i class="bi bi-chevron-right ml-3"></i>
 										</a>
 									</div>
@@ -267,7 +232,7 @@ if(isset($_GET['error'])){
 										</div>
 									</div>
 								</div>
-								<div class="col-md-4 scroll-animate" data-animation="animate__fadeInRight" data-delay="200">
+								<div class="col-md-4 scroll-animate d-none d-md-block" data-animation="animate__fadeInRight" data-delay="200">
 									<div class="about-img mt-4 mt-lg-0">
 										<img src="{{ asset('images/auditoria.jpg') }}" alt="Auditoría a proveedores" class="img-fluid rounded-lg shadow-lg">
 									</div>
@@ -279,13 +244,13 @@ if(isset($_GET['error'])){
 						<div class="tab-pane fade" id="compras">
 							<div class="row align-items-center">
 								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
-									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0 text-center text-md-left">
 										<h4 class="title-color font-weight-bold">Más proveedores en un solo despacho</h4>
 										<p class="mt-4 mb-5 text-justify">
 											Compre con sus proveedores regulares o experimente con los nuevos y nosotros le ayudamos a recibir y enviar en un solo contenedor o por pocos metros cúbicos también está disponible, consolidar es una de las mejores alternativas para aumentar la variedad y reducir el impacto de los fletes altos.
 										</p>
 	
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#tarifas">
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block" data-toggle="modal" data-target="#tarifas">
 											Tarifas y más información <i class="bi bi-chevron-right ml-3"></i>
 										</a>
 									</div>
@@ -302,13 +267,13 @@ if(isset($_GET['error'])){
 						<div class="tab-pane fade" id="despachos">
 							<div class="row align-items-center">
 								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
-									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0 text-center text-md-left">
 										<h4 class="title-color font-weight-bold">¿Solo necesita transporte desde China?</h4>
 										<p class="mt-4 mb-5 text-justify">
 											Nuestro servicio de logística le puede ofrecer las mejores tarifas de contenedores para Latinoamérica saliendo de cualquier puerto de China, contenedores para mercancía convencional, transporte de materiales peligrosos, autos, camiones, maquinaria, contenedores destapados, entre otros.
 										</p>
 	
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#transporte">
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block" data-toggle="modal" data-target="#transporte">
 											Más información y precios <i class="bi bi-chevron-right ml-3"></i>
 										</a>
 									</div>
@@ -325,13 +290,13 @@ if(isset($_GET['error'])){
 						<div class="tab-pane fade" id="ferias">
 							<div class="row align-items-center">
 								<div class="col-md-8 scroll-animate" data-animation="animate__fadeInLeft">
-									<div class="about-content pl-lg-4 mt-4 mt-lg-0">
+									<div class="about-content pl-lg-4 mt-4 mt-lg-0 text-center text-md-left">
 										<h4 class="title-color font-weight-bold">Las mejores ferias y mercados mayoristas</h4>
 										<p class="mt-4 mb-5 text-justify">
 											En abril y octubre son las ferias más completas de China pero durante todos los meses del año hay ferias especializadas por sector en muchas provincias donde le podemos asistir para que sea gratis su hospedaje, traslados y hacer entrevistas muy puntuales con los fabricantes.
 										</p>
 	
-										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect" data-toggle="modal" data-target="#visitas">
+										<a href="#" class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block" data-toggle="modal" data-target="#visitas">
 											Solicite este servicio <i class="bi bi-chevron-right ml-3"></i>
 										</a>
 									</div>
@@ -446,11 +411,11 @@ if(isset($_GET['error'])){
 							la cantidad a comprar y de inmediato obtener todos los cálculos listos.
 						</p>
 	
-						<div class="scroll-animate" 
+						<div class="scroll-animate text-center text-md-left" 
 							 data-animation="animate__fadeInUp" 
 							 data-delay="300">
 							<a href="{{ route('app_futian') }}" 
-							   class="btn btn-main-2 btn-round-full btn-icon hover-effect">
+							   class="btn btn-main-2 btn-round-full btn-icon hover-effect d-inline-block">
 								<span class="d-flex align-items-center">
 									Conozca más sobre esta APP
 									<i class="bi bi-chevron-right ml-3"></i>

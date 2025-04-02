@@ -106,7 +106,7 @@
                     <div class="about-content pl-4 mt-4 mt-lg-0 text-animate delay-2">
                         <div class="video-container">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <video class="embed-responsive-item" controls poster="{{ asset('images/video-poster.jpg') }}">
+                                <video class="embed-responsive-item" controls>
                                     <source src="http://corpofutian.com/video_promo.mp4#t=01" type="video/mp4">
                                     Tu navegador no soporta el elemento de video.
                                 </video>

@@ -35,7 +35,7 @@
     
     @yield('content')
     
-    <script src="https://cdn.pulse.is/livechat/loader.js" data-live-chat-id="67e2b441aa891a4480075814" async></script>
+  
 
     @include('layouts.footer')
 

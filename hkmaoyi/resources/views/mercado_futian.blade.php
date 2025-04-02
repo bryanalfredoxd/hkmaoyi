@@ -94,7 +94,7 @@
                             <div class="col-lg-6 p-2 text-animate delay-2">
                                 <div class="video-container">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <video class="embed-responsive-item" controls poster="{{ asset('images/video-poster.jpg') }}">
+                                        <video class="embed-responsive-item" controls>
                                             <source src="videos/compra3.mp4" type="video/mp4">
                                             Tu navegador no soporta el elemento de video.
                                         </video>
@@ -104,7 +104,7 @@
                             <div class="col-lg-6 p-2 text-animate delay-3">
                                 <div class="video-container">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <video class="embed-responsive-item" controls poster="{{ asset('images/video-poster.jpg') }}">
+                                        <video class="embed-responsive-item" controls>
                                             <source src="videos/compra4.mp4" type="video/mp4">
                                             Tu navegador no soporta el elemento de video.
                                         </video>
