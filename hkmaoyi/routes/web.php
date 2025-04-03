@@ -33,3 +33,15 @@ Route::get('/app-futian', function () {
 Route::get('/en-vivo', function () {
     return view('envivo');
 })->name('envivo');
+
+use App\Http\Controllers\TransporteController;
+
+Route::post('/enviar-cotizacion', [TransporteController::class, 'enviar'])
+    ->name('enviar.cotizacion');
+
+use App\Http\Controllers\VisitasController;
+Route::post('/enviar-visitas', [VisitasController::class, 'enviar'])->name('enviar.visitas');
+
+use App\Http\Controllers\AuditoriaController;
+Route::post('/enviar-auditoria', [AuditoriaController::class, 'enviar'])->name('enviar.auditoria');
+

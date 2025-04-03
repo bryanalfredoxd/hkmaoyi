@@ -257,6 +257,34 @@ if(isset($_GET['error'])){
         </div>
     </section>
 
+    <section class="instagram-container">
+        <div class="container">
+            <h2 class="section-title">Últimas Publicaciones</h2>
+            <div class="row g-4">
+                <!-- Publicación 1 -->
+                <div class="col-md-4">
+                    <div class="instagram-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DH5XMfMvNIG/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
+                
+                <!-- Publicación 2 -->
+                <div class="col-md-4">
+                    <div class="instagram-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DH3cUyfgpTX/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
+                
+                <!-- Publicación 3 -->
+                <div class="col-md-4">
+                    <div class="instagram-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DHzlIKavkYm/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Modal de contacto -->
     <div class="modal fade" id="visitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -334,4 +362,61 @@ if(isset($_GET['error'])){
         </div>
     </div>
 </div>
+
+<!-- Instagram Embed Script -->
+<script async src="//www.instagram.com/embed.js"></script>
+    
+<!-- Script para cargar dinámicamente los embeds -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Espera a que el script de Instagram esté cargado
+        if (typeof instgrm !== 'undefined') {
+            instgrm.Embeds.process();
+        } else {
+            // Si no está cargado, reintentar después de 500ms
+            setTimeout(function() {
+                if (typeof instgrm !== 'undefined') {
+                    instgrm.Embeds.process();
+                }
+            }, 500);
+        }
+    });
+</script>
+
+<style>
+    .instagram-container {
+        padding: 2rem 0;
+        background-color: #f8f9fa;
+    }
+    .instagram-card {
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .instagram-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    .instagram-media {
+        width: 100%;
+        min-height: 300px;
+        border: 0;
+    }
+    .section-title {
+        position: relative;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .section-title:after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: #E1306C;
+        margin: 15px auto;
+    }
+</style>
 @endsection

@@ -454,7 +454,8 @@ if(isset($_GET['error'])){
 	
 				<!-- Cuerpo de la modal -->
 				<div class="modal-body" style="padding: 2rem;">
-					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
+					<form class="appoinment-form" method="POST" action="{{ route('enviar.auditoria') }}">
+						@csrf
 						<div class="row">
 							<!-- Columna izquierda -->
 							<div class="col-md-6">
@@ -549,7 +550,8 @@ if(isset($_GET['error'])){
 	
 				<!-- Cuerpo de la modal -->
 				<div class="modal-body" style="padding: 2rem;">
-					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
+					<form class="appoinment-form" method="POST" action="{{ route('enviar.visitas') }}">
+						@csrf
 						<div class="row">
 							<!-- Columna izquierda -->
 							<div class="col-md-6">
@@ -699,7 +701,8 @@ if(isset($_GET['error'])){
 	
 				<!-- Cuerpo de la modal -->
 				<div class="modal-body" style="padding: 2rem;">
-					<form class="appoinment-form" method="POST" action="http://corpoasia.synology.me/email/ma.php">
+					<form class="appoinment-form" method="POST" action="{{ route('enviar.cotizacion') }}">
+						@csrf
 						<div class="row">
 							<!-- Columna izquierda -->
 							<div class="col-md-6">
@@ -774,4 +777,112 @@ if(isset($_GET['error'])){
 		</div>
 	</div>
 </div>
+
+{{-- Mensaje de éxito --}}
+@if(session('success'))
+<div class="alert alert-success alert-dismissible fade show text-center py-2 px-3" role="alert" id="autoCloseAlert" style="
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 350px;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+    z-index: 9999;
+">
+    <div class="d-flex align-items-center justify-content-center">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div class="small">{{ session('success') }}</div>
+    </div>
+</div>
+@endif
+
+{{-- Mensaje de error --}}
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show text-center py-2 px-3" role="alert" id="autoCloseAlert" style="
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 350px;
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+    z-index: 9999;
+">
+    <div class="d-flex align-items-center justify-content-center">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div class="small">{{ session('error') }}</div>
+    </div>
+</div>
+@endif
+
+<script>
+	$(document).ready(function() {
+		$('.appoinment-form').on('submit', function(e) {
+			e.preventDefault();
+			
+			var form = $(this);
+			var submitBtn = form.find('button[type="submit"]');
+			var modal = $('#transporte'); // Selecciona el modal
+			
+			// Cambiar texto del botón y deshabilitarlo
+			submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...').prop('disabled', true);
+			
+			$.ajax({
+				url: form.attr('action'),
+				method: 'POST',
+				data: form.serialize(),
+				success: function(response) {
+					if (response.success) {
+						// Mostrar SweetAlert2 (o alerta básica)
+						Swal.fire({
+							icon: 'success',
+							title: '¡Éxito!',
+							text: response.message,
+							confirmButtonColor: '#223a66'
+						}).then(() => {
+							form.trigger('reset'); // Limpiar formulario
+							modal.modal('hide'); // Cerrar modal
+						});
+					}
+				},
+				error: function(xhr) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Error',
+						text: xhr.responseJSON?.message || 'Ocurrió un error',
+						confirmButtonColor: '#223a66'
+					});
+				},
+				complete: function() {
+					submitBtn.html('<i class="bi bi-send-fill me-2"></i> ENVIAR SOLICITUD').prop('disabled', false);
+				}
+			});
+		});
+	});
+</script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Cierra automáticamente después de 5 segundos
+		const alert = document.getElementById('autoCloseAlert');
+		if (alert) {
+			setTimeout(() => {
+				const bsAlert = new bootstrap.Alert(alert);
+				bsAlert.close();
+			}, 3500);
+		}
+	
+		// Permite cerrar manualmente
+		document.querySelectorAll('[data-bs-dismiss="alert"]').forEach(button => {
+			button.addEventListener('click', () => {
+				const alert = button.closest('.alert');
+				const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+				bsAlert.close();
+			});
+		});
+	});
+	</script>
 @endsection
