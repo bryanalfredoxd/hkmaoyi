@@ -19,7 +19,9 @@ class VisitasController extends Controller
             'mensaje' => 'required'
         ]);
 
-        Mail::to('asia@hkmaoyi.com')->send(new VisitasCotizacionMail(
+        $destinatarios = ['asia@hkmaoyi.com', 'gerenciacorpoasia@gmail.com'];
+        
+        Mail::to($destinatarios)->send(new VisitasCotizacionMail(
             $request->nombre,
             $request->email,
             $request->pais,

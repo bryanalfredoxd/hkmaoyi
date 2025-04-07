@@ -19,7 +19,9 @@ class AuditoriaController extends Controller
             'provincia' => 'required'
         ]);
 
-        Mail::to('asia@hkmaoyi.com')->send(new AuditoriaMail(
+        $destinatarios = ['asia@hkmaoyi.com', 'gerenciacorpoasia@gmail.com'];
+        
+        Mail::to($destinatarios)->send(new AuditoriaMail(
             $request->nombre,
             $request->email,
             $request->tipo_auditoria,

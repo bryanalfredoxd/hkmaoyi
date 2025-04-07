@@ -489,7 +489,7 @@ if(isset($_GET['error'])){
 									</div>
 								</div>
 							</div>
-	
+					
 							<!-- Columna derecha -->
 							<div class="col-md-6">
 								<div class="form-group mb-4">
@@ -508,20 +508,26 @@ if(isset($_GET['error'])){
 									</select>
 								</div>
 								<div class="form-group mb-4">
-									<label for="recipient-city" class="col-form-label font-weight-bold">
-										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
-									</label>
-									<input type="text" class="form-control form-control-lg" id="recipient-city" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;">
-								</div>
-								<div class="form-group mb-4">
-									<label for="recipient-province" class="col-form-label font-weight-bold">
+									<label for="china-province" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt-fill me-2"></i> Provincia en China
 									</label>
-									<input type="text" class="form-control form-control-lg" id="recipient-province" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
+									<select class="form-control form-control-lg" id="china-province" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione primero la provincia</option>
+										
+									</select>
+								</div>
+								<div class="form-group mb-4">
+									<label for="china-city" class="col-form-label font-weight-bold">
+										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
+									</label>
+									<select class="form-control form-control-lg" id="china-city" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;" disabled>
+										<option value="" disabled selected>Seleccione primero la provincia</option>
+										
+									</select>
 								</div>
 							</div>
 						</div>
-	
+					
 						<!-- Pie de la modal -->
 						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none; padding: 1.5rem 0 0 0;">
 							<button type="submit" name="auditoria" class="btn btn-primary btn-lg" style="background-color: #223a66; border: none; padding: 10px 40px; border-radius: 25px; min-width: 200px;">
@@ -583,21 +589,37 @@ if(isset($_GET['error'])){
 									</select>
 								</div>
 							</div>
-	
+					
 							<!-- Columna derecha -->
 							<div class="col-md-6">
-								<div class="form-group mb-4">
-									<label for="visitas-ciudad" class="col-form-label font-weight-bold">
-										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
-									</label>
-									<input type="text" class="form-control form-control-lg" id="visitas-ciudad" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;">
-								</div>
 								<div class="form-group mb-4">
 									<label for="visitas-provincia" class="col-form-label font-weight-bold">
 										<i class="bi bi-geo-alt-fill me-2"></i> Provincia en China
 									</label>
-									<input type="text" class="form-control form-control-lg" id="visitas-provincia" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
+									<select class="form-control form-control-lg" id="visitas-provincia" name="provincia" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione una provincia</option>
+										<option value="Beijing">Beijing</option>
+										<option value="Shanghai">Shanghai</option>
+										<option value="Guangdong">Guangdong</option>
+										<option value="Zhejiang">Zhejiang</option>
+										<option value="Jiangsu">Jiangsu</option>
+										<option value="Fujian">Fujian</option>
+										<option value="Sichuan">Sichuan</option>
+										<option value="Hubei">Hubei</option>
+										<option value="Shandong">Shandong</option>
+										<option value="Liaoning">Liaoning</option>
+									</select>
 								</div>
+					
+								<div class="form-group mb-4">
+									<label for="visitas-ciudad" class="col-form-label font-weight-bold">
+										<i class="bi bi-geo-alt me-2"></i> Ciudad en China
+									</label>
+									<select class="form-control form-control-lg" id="visitas-ciudad" name="ciudad" required style="border-radius: 5px; border: 1px solid #ddd;">
+										<option value="" disabled selected>Seleccione una ciudad</option>
+									</select>
+								</div>
+					
 								<div class="form-group mb-4">
 									<label for="visitas-mensaje" class="col-form-label font-weight-bold">
 										<i class="bi bi-chat-left-text me-2"></i> Mensaje
@@ -606,7 +628,7 @@ if(isset($_GET['error'])){
 								</div>
 							</div>
 						</div>
-	
+					
 						<!-- Pie de la modal -->
 						<div class="modal-footer" style="display: flex; justify-content: center; border-top: none; padding: 1.5rem 0 0 0;">
 							<button type="submit" class="btn btn-primary btn-lg" name="visita" style="background-color: #223a66; border: none; padding: 10px 40px; border-radius: 25px; min-width: 200px;">
@@ -618,7 +640,6 @@ if(isset($_GET['error'])){
 			</div>
 		</div>
 	</div>
-
 
 	<!--Modal Tarifas-->
 	<div class="modal fade" id="tarifas" tabindex="-1" role="dialog" aria-labelledby="tarifasModalLabel" aria-hidden="true">
@@ -825,9 +846,8 @@ if(isset($_GET['error'])){
 			
 			var form = $(this);
 			var submitBtn = form.find('button[type="submit"]');
-			var modal = $('#transporte'); // Selecciona el modal
+			var modal = $('#transporte');
 			
-			// Cambiar texto del botón y deshabilitarlo
 			submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...').prop('disabled', true);
 			
 			$.ajax({
@@ -836,7 +856,7 @@ if(isset($_GET['error'])){
 				data: form.serialize(),
 				success: function(response) {
 					if (response.success) {
-						// Mostrar SweetAlert2 (o alerta básica)
+						// Mostrar SweetAlert2
 						Swal.fire({
 							icon: 'success',
 							title: '¡Éxito!',
@@ -884,5 +904,85 @@ if(isset($_GET['error'])){
 			});
 		});
 	});
-	</script>
+</script>
+
+<script>
+    const ciudadesPorProvincia = {
+        "Beijing": ["Beijing"],
+		"Shanghai": ["Shanghai"],
+		"Guangdong": ["Guangzhou", "Shenzhen", "Dongguan", "Foshan", "Zhuhai"],
+		"Zhejiang": ["Hangzhou", "Ningbo", "Wenzhou", "Shaoxing", "Huzhou"],
+		"Jiangsu": ["Nanjing", "Suzhou", "Wuxi", "Changzhou", "Xuzhou"],
+		"Fujian": ["Xiamen", "Fuzhou", "Quanzhou", "Zhangzhou", "Putian"],
+		"Sichuan": ["Chengdu", "Mianyang", "Leshan", "Yibin", "Dazhou"],
+		"Hubei": ["Wuhan", "Xiangyang", "Yichang", "Jingzhou", "Huangshi"],
+		"Shandong": ["Qingdao", "Jinan", "Yantai", "Weifang", "Linyi"],
+		"Liaoning": ["Dalian", "Shenyang", "Anshan", "Fushun", "Dandong"]
+    };
+
+    const provinciaSelect = document.getElementById('visitas-provincia');
+    const ciudadSelect = document.getElementById('visitas-ciudad');
+
+    provinciaSelect.addEventListener('change', function () {
+        const provinciaSeleccionada = this.value;
+        const ciudades = ciudadesPorProvincia[provinciaSeleccionada] || [];
+
+        ciudadSelect.innerHTML = '<option value="" disabled selected>Seleccione una ciudad</option>';
+
+        ciudades.forEach(function (ciudad) {
+            const option = document.createElement('option');
+            option.value = ciudad;
+            option.textContent = ciudad;
+            ciudadSelect.appendChild(option);
+        });
+    });
+</script>
+
+<script>
+	// Datos de provincias y ciudades de China
+	const chinaLocations = {
+		"Beijing": ["Beijing"],
+		"Shanghai": ["Shanghai"],
+		"Guangdong": ["Guangzhou", "Shenzhen", "Dongguan", "Foshan", "Zhuhai"],
+		"Zhejiang": ["Hangzhou", "Ningbo", "Wenzhou", "Shaoxing", "Huzhou"],
+		"Jiangsu": ["Nanjing", "Suzhou", "Wuxi", "Changzhou", "Xuzhou"],
+		"Fujian": ["Xiamen", "Fuzhou", "Quanzhou", "Zhangzhou", "Putian"],
+		"Sichuan": ["Chengdu", "Mianyang", "Leshan", "Yibin", "Dazhou"],
+		"Hubei": ["Wuhan", "Xiangyang", "Yichang", "Jingzhou", "Huangshi"],
+		"Shandong": ["Qingdao", "Jinan", "Yantai", "Weifang", "Linyi"],
+		"Liaoning": ["Dalian", "Shenyang", "Anshan", "Fushun", "Dandong"]
+	};
+	
+	// Seleccionar elementos del DOM
+	const provinceSelect = document.getElementById('china-province');
+	const citySelect = document.getElementById('china-city');
+	
+	// Llenar las provincias
+	Object.keys(chinaLocations).forEach(province => {
+		const option = document.createElement('option');
+		option.value = province;
+		option.textContent = province;
+		provinceSelect.appendChild(option);
+	});
+	
+	// Evento cuando se selecciona una provincia
+	provinceSelect.addEventListener('change', function() {
+		const selectedProvince = this.value;
+		
+		// Limpiar y deshabilitar el selector de ciudades
+		citySelect.innerHTML = '<option value="" disabled selected>Seleccione una ciudad</option>';
+		citySelect.disabled = !selectedProvince;
+		
+		if (selectedProvince) {
+			// Llenar las ciudades correspondientes a la provincia seleccionada
+			chinaLocations[selectedProvince].forEach(city => {
+				const option = document.createElement('option');
+				option.value = city;
+				option.textContent = city;
+				citySelect.appendChild(option);
+			});
+			citySelect.disabled = false;
+		}
+	});
+</script>
 @endsection

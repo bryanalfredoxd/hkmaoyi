@@ -20,7 +20,8 @@ class TransporteController extends Controller
         ]);
 
         try {
-            Mail::to('asia@hkmaoyi.com')->send(new TransporteCotizacionMail(
+            Mail::to(['asia@hkmaoyi.com', 'gerenciacorpoasia@gmail.com'])
+            ->send(new TransporteCotizacionMail(
                 $request->nombre,
                 $request->email,
                 $request->puerto,
@@ -29,7 +30,7 @@ class TransporteController extends Controller
                 $request->mensaje
             ));
 
-            return redirect('/')->with('success', '¡Solicitud enviada correctamente!');
+            return redirect('/')->with('success', ' ¡Solicitud enviada correctamente!');
 
     } catch (\Exception $e) {
         return redirect('/')->with('error', 'Error al enviar: ' . $e->getMessage());
